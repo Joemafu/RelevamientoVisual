@@ -1,4 +1,4 @@
-package com.example.app;
+package relevamiento.visual;
 
 import com.getcapacitor.BridgeActivity;
 
