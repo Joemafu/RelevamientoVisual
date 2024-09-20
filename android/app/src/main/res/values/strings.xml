@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">Relevamiento Visual</string>
+    <string name="app_name">RelevamientoVisual</string>
     <string name="title_activity_main">Relevamiento Visual</string>
     <string name="package_name">relevamiento.visual</string>
     <string name="custom_url_scheme">relevamiento.visual</string>
