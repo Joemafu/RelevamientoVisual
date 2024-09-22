@@ -1,0 +1,32 @@
+//este archivo al final no me sirvió
+
+
+@import './variables.scss';
+
+ion-content {
+    --background: $fondo;
+}
+
+ion-button {
+    --background: $boton;
+    --color: $fuente-boton;
+}
+
+/* .btn-primary {
+    background: $boton;
+    --color: $fuente-boton;
+} */
+
+/* body {
+    color: $fondo;
+} */
+
+/* .texto {
+    color: $fuente;
+} */
+
+/* :root {
+    --ion-color-primary: $fondo;
+    --ion-color-primary-contrast: $fuente;
+    --ion-color-secondary: $boton;
+  } */

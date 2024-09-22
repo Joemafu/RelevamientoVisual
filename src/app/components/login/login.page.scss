@@ -1,3 +1,19 @@
+//@import '../../../styles/variables.scss';
+
+  ion-content {
+    --background: #DAB3E9;
+    font-family: 'Roboto', sans-serif;
+  }
+
+  .texto {
+    color: #4A2C5B;
+  }
+
+  ion-button {
+    --background: #A066D9;
+    --color: #FFFFFF;
+  }
+
 .form-signin {
     max-width: 330px;
     padding: 1rem;
@@ -60,3 +76,5 @@
     height: 100%;
     object-fit: cover;
   }
+
+  

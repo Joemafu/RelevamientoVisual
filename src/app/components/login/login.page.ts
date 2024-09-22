@@ -1,6 +1,5 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonInput, IonList, IonItem } from '@ionic/angular/standalone';
-import { ExploreContainerComponent } from '../../explore-container/explore-container.component';
 import { ReactiveFormsModule, FormBuilder, FormGroup, FormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
@@ -13,10 +12,9 @@ import { NavController } from '@ionic/angular';
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
   standalone: true,
-  imports: [IonItem, IonList, IonInput, IonButton, IonHeader, IonToolbar, IonTitle, IonContent, ExploreContainerComponent, FormsModule, CommonModule, ReactiveFormsModule],
+  imports: [IonItem, IonList, IonInput, IonButton, IonHeader, IonToolbar, IonTitle, IonContent, FormsModule, CommonModule, ReactiveFormsModule],
 })
 export class LoginPage implements OnInit {
-
 
   protected mail: string = "";
   protected pass: string ="";
@@ -65,22 +63,22 @@ export class LoginPage implements OnInit {
 
   buttonDemoUno()
   {
-    this.mail="Admin@correo.com";
-    this.pass="administrador123";
+    this.mail="Admin@admin.com";
+    this.pass="111111";
     this.loginForm.setValue({mail: this.mail, pass: this.pass});
   }
 
   buttonDemoDos()
   {
-    this.mail="Bruma@correo.com";
-    this.pass="bruma123";
+    this.mail="tester@tester.com";
+    this.pass="555555";
     this.loginForm.setValue({mail: this.mail, pass: this.pass});
   }
 
   buttonDemoTres()
   {
-    this.mail="Joel@correo.com";
-    this.pass="joel123";
+    this.mail="usuario@usuario.com";
+    this.pass="333333";
     this.loginForm.setValue({mail: this.mail, pass: this.pass});
   }
 
