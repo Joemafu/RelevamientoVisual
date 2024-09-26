@@ -8,8 +8,14 @@
     justify-content: center;
     align-items: center;
     color: #ffffff;
-    background-color: #B23DDC;
+    background-color: #39225B;
     z-index: 1000;
+    animation: colorChange 4s ease-in-out infinite;
+  }
+
+  @keyframes colorChange {
+    0% { background-color: #39225B; }
+    100% { background-color: #DAB3E9; }
   }
   
   .splash-content {
