@@ -14,6 +14,18 @@
     --color: #FFFFFF;
   }
 
+  .primary {
+    --background: #DAB3E9;
+    --ion-color-primary: #DAB3E9;
+    --ion-color-primary-contrast: #4A2C5B;
+  }
+
+  .secondary {
+    --background: #A066D9;
+    --ion-color-secondary: #A066D9;
+    --ion-color-secondary-contrast: #FFFFFF;
+  }
+
 .form-signin {
     max-width: 330px;
     padding: 1rem;
