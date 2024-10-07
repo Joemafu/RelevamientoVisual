@@ -1,46 +1,65 @@
 .splash-screen {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #ffffff;
-    background-color: #39225B;
-    z-index: 1000;
-    animation: colorChange 4s ease-in-out infinite;
-  }
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #39225B;
+  z-index: 1000;
+  animation: colorChange 4s ease-in-out infinite;
+  width: 100vw;
+  height: 100vh;
+}
 
-  @keyframes colorChange {
-    0% { background-color: #39225B; }
-    100% { background-color: #DAB3E9; }
-  }
-  
-  .splash-content {
-    text-align: center;
-  }
-  
-  .splash-logo {
-    width: 80px;
-    height: 80px;
-    opacity: 0;
-    animation: fadeInLogo 2s ease-in-out 1.5s forwards;
-    margin-bottom: 35px;
-    margin-top: 15px;
-  }
+@keyframes colorChange {
+  0% { background-color: #39225B; }
+  100% { background-color: #DAB3E9; }
+}
 
-  .splash-content h1 {
-    animation: zoomIn 2s ease-in-out;
-  }
-  
-  @keyframes zoomIn {
-    0% { transform: scale(0.5); opacity: 0; }
-    100% { transform: scale(1); opacity: 1; }
-  }
-  
-  @keyframes fadeInLogo {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
-  }
+.splash-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between; /* Distribuye los elementos en toda la pantalla */
+  height: 80%; /* Ajusta el espacio vertical ocupado */
+  width: 100%; /* Asegura que ocupe todo el ancho */
+  padding: 0 20px; /* Añade un pequeño padding lateral */
+}
+
+.splash-logo {
+  width: 150px; /* Aumenta el tamaño del logo */
+  height: 150px;
+  opacity: 0;
+  animation: fadeInLogo 2s ease-in-out 1.5s forwards;
+}
+
+.splash-text h1 {
+  margin: 0;
+  font-size: 3rem; /* Aumenta el tamaño del texto */
+  text-transform: uppercase;
+  font-weight: bold;
+  text-align: center;
+}
+
+.splash-text h1:first-child {
+  margin-bottom: 10px;
+}
+
+.splash-content p {
+  font-size: 2rem; /* Aumenta el tamaño del código */
+  text-align: center;
+  margin-top: 20px;
+}
+
+@keyframes zoomIn {
+  0% { transform: scale(0.5); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes fadeInLogo {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}

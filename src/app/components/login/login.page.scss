@@ -1,6 +1,7 @@
 //@import '../../../styles/variables.scss';
 .full-height {
   height: 100vh; /* Ocupa toda la altura del viewport */
+  
 }
 
 .form-signin {
@@ -19,12 +20,54 @@
 }
 
 
+.logo_animado {
+  animation: rotatePause 6s infinite;
+  margin-top: 15%;
+}
+
+@keyframes rotatePause {
+  0% {
+    transform: rotate(0deg); 
+  }
+  15% {
+    transform: rotate(0deg);
+  }
+  19% {
+    transform: rotate(185deg); 
+  }
+  20% {
+    transform: rotate(180deg); 
+  }
+  65% {
+    transform: rotate(180deg); 
+  }
+  69% {
+    transform: rotate(365deg); 
+  }
+  70% {
+    transform: rotate(360deg); 
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+
+
+
 
 
 
   ion-content {
-    --background: #DAB3E9;
+    //--background: #DAB3E9;
+    
+
     font-family: 'Roboto', sans-serif;
+    background-image: url("./../../../assets/img/building.jpg"); /* Usamos url() para el background */
+    background-size: cover; /* Asegura que la imagen cubra toda la pantalla */
+    background-position: center; /* Centra la imagen */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
   }
 
   .texto {
@@ -49,8 +92,8 @@
   }
 
 .form-signin {
-    max-width: 330px;
     padding: 1rem;
+    background-color: rgba($color: #DAB3E9, $alpha: 0.7);
   }
   
   .form-signin .form-floating:focus-within {

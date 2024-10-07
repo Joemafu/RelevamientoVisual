@@ -1,9 +1,15 @@
-<ion-content [fullscreen]="true">
+<ion-content  [fullscreen]="true">
 <main class="form-signin w-100 m-auto">
+
+  <header class="container-fluid d-flex flex-column justify-content-center align-items-center full-width" style="margin-bottom: 25%;">
+    <h1 class="texto mb-3">Relevamiento visual</h1>
+    <img class="logo_animado" src="./../../../assets/img/logo.svg" alt="" height="100">
+  </header>
+
   <div class="container-fluid d-flex justify-content-center align-items-center full-width">
 
     <form [formGroup]="loginForm" (ngSubmit)="login()" class="needs-validation" novalidate>
-      <header></header>
+      
 
       <h3 class="texto w-100 mb-3 fw-normal m-auto">Ingresar credenciales</h3>
 
