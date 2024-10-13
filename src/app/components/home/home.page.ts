@@ -12,12 +12,12 @@ import { Subscription } from 'rxjs';
   imports: [IonItem,  IonIcon, IonFabButton, IonFab, IonButton, IonCardContent, IonCardSubtitle, IonCardTitle, IonCardHeader, IonCard, IonToolbar, IonTitle, IonContent],
 })
 export class HomePage implements OnInit {
-  
+
   authService: AuthService = inject(AuthService);
   router: Router = inject(Router);
   usuario: string = '';
   public subscription: Subscription = new Subscription();
-  selectedRoom: string = '';
+  selectedCosas: string = '';
 
   ngOnInit(): void {
     this.subscription = this.authService.user$.subscribe((user) => {
@@ -36,12 +36,13 @@ export class HomePage implements OnInit {
     });
   }
 
-  goToRoom(room: string) {
-    this.selectedRoom = room;
+  goToCosas(cosas: string)
+  {
+    this.selectedCosas = cosas;
   }
 
   goHome() {
-    this.selectedRoom = '';
+    this.selectedCosas = '';
   }
 
   logout() {

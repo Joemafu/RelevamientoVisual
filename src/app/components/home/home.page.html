@@ -1,23 +1,49 @@
+<!-- <ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Relevamiento Visual</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-card class="secondary">
+    <ion-card-header>
+      <ion-card-subtitle class="texto">{{usuario}}</ion-card-subtitle>
+      <ion-card-title>Bienvenido/a!</ion-card-title>
+    </ion-card-header>
+    <ion-card-content class="texto">
+      Pronto podrás subir tus propias imágenes y votar las de tus vecinos! <img src="../../assets/img/logo.svg" alt="Sword" height="15px" > 
+    </ion-card-content>
+  </ion-card>
+  
+  <div class="container-fluid d-flex justify-content-center align-items-center full-width">
+
+    <ion-button (click)="logout()">Cerrar Sesión</ion-button>
+  
+  </div>
+</ion-content> -->
+
+
 <ion-content #home>
 
-  @if(!selectedRoom)
+  @if(!selectedCosas)
   {
     <div class="button-container">
-      <ion-card class="sala-card" (click)="goToRoom('PPS-A141-1')">
+      <ion-card class="sala-card" (click)="goToCosas('lindas')">
         <ion-card-content>
-          <p>PPS-A141-1</p>
+          <p>Cosas Lindas</p>
         </ion-card-content>
       </ion-card>
-      <ion-card class="sala-card sala-cardDos" (click)="goToRoom('PPS-A141-2')">
+      <ion-card class="sala-card sala-cardDos" (click)="goToCosas('feas')">
         <ion-card-content>
-          <p>PPS-A141-2</p>
+          <p>Cosas Feas</p>
         </ion-card-content>
       </ion-card>
     </div>
   }
 
-  @if (selectedRoom)
+  @if (selectedCosas)
   {
+    <!-- app cosas feas/lindas -->
     <ion-fab vertical="top" horizontal="start" slot="fixed">
       <ion-fab-button class="fabNeon" (click)="goHome()">
         <ion-icon name="home"></ion-icon>
