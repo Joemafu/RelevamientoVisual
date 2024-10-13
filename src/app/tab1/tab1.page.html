@@ -1,12 +1,4 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Relevamiento Visual
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
+<!-- <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">Relevamiento Visual</ion-title>
@@ -28,4 +20,41 @@
     <ion-button (click)="logout()">Cerrar Sesión</ion-button>
   
   </div>
+</ion-content> -->
+
+
+<ion-content #home>
+
+  @if(!selectedCosas)
+  {
+    <div class="button-container">
+      <ion-card class="sala-card" (click)="goToCosas('lindas')">
+        <ion-card-content>
+          <p>Cosas Lindas</p>
+        </ion-card-content>
+      </ion-card>
+      <ion-card class="sala-card sala-cardDos" (click)="goToCosas('feas')">
+        <ion-card-content>
+          <p>Cosas Feas</p>
+        </ion-card-content>
+      </ion-card>
+    </div>
+  }
+
+  @if (selectedCosas)
+  {
+    <!-- app cosas feas/lindas -->
+    <ion-fab vertical="top" horizontal="start" slot="fixed">
+      <ion-fab-button class="fabNeon" (click)="goHome()">
+        <ion-icon name="home"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+  }
+
+  <ion-fab vertical="top" horizontal="end" slot="fixed">
+    <ion-fab-button class="fabNeon" (click)="logout()">
+      <ion-icon name="log-out"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
 </ion-content>
