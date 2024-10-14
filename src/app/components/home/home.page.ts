@@ -1,15 +1,20 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { IonToolbar, IonTitle, IonContent, IonButton, IonCardSubtitle, IonCardHeader, IonCard, IonCardTitle, IonCardContent, IonFab, IonFabButton, IonIcon, IonItem } from '@ionic/angular/standalone';
+import { IonToolbar, IonTitle, IonContent, IonButton, IonCardSubtitle, IonCardHeader, IonCard, IonCardTitle, IonCardContent, IonFab, IonFabButton, IonIcon, IonItem, IonHeader, IonFabList } from '@ionic/angular/standalone';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { CosasComponent } from '../cosas/cosas.component';
+import { CameraService } from 'src/app/services/camera.service';
+import { ImagenUploadService } from 'src/app/services/imagen-upload.service';
+import Swal from 'sweetalert2';
+import { ItemService } from 'src/app/services/item.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
   standalone: true,
-  imports: [IonItem,  IonIcon, IonFabButton, IonFab, IonButton, IonCardContent, IonCardSubtitle, IonCardTitle, IonCardHeader, IonCard, IonToolbar, IonTitle, IonContent],
+  imports: [IonFabList, IonHeader, IonItem,  IonIcon, IonFabButton, IonFab, IonButton, IonCardContent, IonCardSubtitle, IonCardTitle, IonCardHeader, IonCard, IonToolbar, IonTitle, IonContent, CosasComponent],
 })
 export class HomePage implements OnInit {
 
@@ -18,6 +23,9 @@ export class HomePage implements OnInit {
   usuario: string = '';
   public subscription: Subscription = new Subscription();
   selectedCosas: string = '';
+  private cameraService: CameraService = new CameraService();
+  private imagenUploadService: ImagenUploadService = new ImagenUploadService();
+  private itemService: ItemService = inject(ItemService);
 
   ngOnInit(): void {
     this.subscription = this.authService.user$.subscribe((user) => {
@@ -39,13 +47,63 @@ export class HomePage implements OnInit {
   goToCosas(cosas: string)
   {
     this.selectedCosas = cosas;
+    console.log ('Se seleccionaron: cosas '+cosas);
   }
 
   goHome() {
     this.selectedCosas = '';
+    
+    console.log ('Se eliminó la selección'+this.selectedCosas);
   }
 
   logout() {
     this.authService.logout();
+  }
+
+
+
+
+
+
+  async takePhoto() {
+    try {
+      const imageBase64 = await this.cameraService.takePhoto();
+      if (imageBase64) {
+        const url = await this.imagenUploadService.uploadPhoto(imageBase64);
+        this.itemService.savePhotoData(url, this.selectedCosas);
+        Swal.fire({
+          title: 'Imagen subida exitosamente',
+          icon: 'success',
+          heightAuto: false,
+        });
+      }
+    } catch (error) {
+      Swal.fire({
+        title: 'Error al subir la foto',
+        icon: 'error',
+        heightAuto: false,
+      });
+    }
+  }
+
+  async selectFromGallery() {
+    try {
+      const imageBase64 = await this.cameraService.selectFromGallery();
+      if (imageBase64) {
+        const url = await this.imagenUploadService.uploadPhoto(imageBase64);        
+        this.itemService.savePhotoData(url, this.selectedCosas);
+        Swal.fire({
+          title: 'Imagen subida exitosamente',
+          icon: 'success',
+          heightAuto: false,
+        });
+      }
+    } catch (error) {
+      Swal.fire({
+        title: 'Error al subir la foto',
+        icon: 'error',
+        heightAuto: false,
+      });
+    }
   }
 }

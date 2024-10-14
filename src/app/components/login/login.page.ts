@@ -50,7 +50,7 @@ export class LoginPage implements OnInit {
       this.mail = "";
       this.pass = "";
       if (alert === '') {
-        this.navCtrl.navigateRoot('/tabs');
+        this.navCtrl.navigateRoot('/home');
       }
     }).catch(error => {
       console.error('login.component - login()', error);

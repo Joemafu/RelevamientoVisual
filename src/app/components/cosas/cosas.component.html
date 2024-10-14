@@ -1,0 +1,25 @@
+<!-- image-viewer.component.html -->
+<ion-content>
+  <ion-list *ngIf="photos && photos.length > 0; else noPhotos">
+    <ion-card *ngFor="let photo of photos">
+      <img [src]="photo.imageUrl" alt=""/>
+      <ion-card-header>
+        <!-- <ion-card-title>{{ photo.description || 'Sin descripción' }}</ion-card-title> -->
+      </ion-card-header>
+      <ion-card-content>
+        <p>Subido por: {{ photo.author }}</p>
+        <p>Votos: {{ photo.voters.length || 0 }}</p>
+        <ion-button color="primary" (click)="voteForPhoto(photo.id)">
+          <ion-icon slot="start" name="star"></ion-icon>
+          Votar
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+
+  <ng-template #noPhotos>
+    <ion-card>
+      <ion-card-content>No hay fotos disponibles aún.</ion-card-content>
+    </ion-card>
+  </ng-template>
+</ion-content>

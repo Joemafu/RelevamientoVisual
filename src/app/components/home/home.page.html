@@ -22,7 +22,6 @@
   </div>
 </ion-content> -->
 
-
 <ion-content #home>
 
   @if(!selectedCosas)
@@ -30,11 +29,13 @@
     <div class="button-container">
       <ion-card class="sala-card" (click)="goToCosas('lindas')">
         <ion-card-content>
+          <ion-icon class="heart" name="heart-sharp"></ion-icon>
           <p>Cosas Lindas</p>
         </ion-card-content>
       </ion-card>
       <ion-card class="sala-card sala-cardDos" (click)="goToCosas('feas')">
         <ion-card-content>
+          <ion-icon class="skull" name="skull-sharp"></ion-icon>
           <p>Cosas Feas</p>
         </ion-card-content>
       </ion-card>
@@ -42,19 +43,36 @@
   }
 
   @if (selectedCosas)
-  {
-    <!-- app cosas feas/lindas -->
+  {   
+    <app-cosas [cosas]="selectedCosas"></app-cosas>
     <ion-fab vertical="top" horizontal="start" slot="fixed">
       <ion-fab-button class="fabNeon" (click)="goHome()">
-        <ion-icon name="home"></ion-icon>
+        <ion-icon name="arrow-back-sharp"></ion-icon>
       </ion-fab-button>
     </ion-fab>
+
+      <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button class="fabNeon">
+          <ion-icon name="add"></ion-icon>
+        </ion-fab-button>
+
+        <ion-fab-list side="top">
+          <ion-fab-button class="fabNeon" (click)="takePhoto()">
+            <ion-icon name="camera"></ion-icon>
+          </ion-fab-button>
+          <ion-fab-button class="fabNeon" (click)="selectFromGallery()">
+            <ion-icon name="image"></ion-icon>
+          </ion-fab-button>
+        </ion-fab-list>
+      </ion-fab>
   }
 
   <ion-fab vertical="top" horizontal="end" slot="fixed">
     <ion-fab-button class="fabNeon" (click)="logout()">
-      <ion-icon name="log-out"></ion-icon>
+      <ion-icon name="power-sharp"></ion-icon>
     </ion-fab-button>
   </ion-fab>
+
+
 
 </ion-content>

@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { Usuario } from '../interfaces/usuario';
 import { HttpClient } from '@angular/common/http';
 import { UserService } from './user.service';
-import { LogService } from './log.service';
 
 @Injectable({
   providedIn: 'root'
@@ -20,8 +19,6 @@ export class AuthService {
   public http: HttpClient = inject(HttpClient);
 
   public userService: UserService = inject(UserService);
-
-  private logService: LogService = inject(LogService);
 
   constructor() {}
   
