@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, EventEmitter, Output } from '@angular/core';
 import { IonToolbar, IonTitle, IonContent, IonButton, IonCardSubtitle, IonCardHeader, IonCard, IonCardTitle, IonCardContent, IonFab, IonFabButton, IonIcon, IonItem, IonHeader, IonFabList } from '@ionic/angular/standalone';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
@@ -14,7 +14,7 @@ import { ItemService } from 'src/app/services/item.service';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
   standalone: true,
-  imports: [IonFabList, IonHeader, IonItem,  IonIcon, IonFabButton, IonFab, IonButton, IonCardContent, IonCardSubtitle, IonCardTitle, IonCardHeader, IonCard, IonToolbar, IonTitle, IonContent, CosasComponent],
+  imports: [IonFabList, IonHeader, IonItem,  IonIcon, IonFabButton, IonFab, IonButton, IonCardContent, IonCardSubtitle, IonCardTitle, IonCardHeader, IonCard, IonToolbar, IonTitle, IonContent, CosasComponent ],
 })
 export class HomePage implements OnInit {
 
@@ -47,23 +47,15 @@ export class HomePage implements OnInit {
   goToCosas(cosas: string)
   {
     this.selectedCosas = cosas;
-    console.log ('Se seleccionaron: cosas '+cosas);
   }
 
   goHome() {
     this.selectedCosas = '';
-    
-    console.log ('Se eliminó la selección'+this.selectedCosas);
   }
 
   logout() {
     this.authService.logout();
   }
-
-
-
-
-
 
   async takePhoto() {
     try {
@@ -71,18 +63,28 @@ export class HomePage implements OnInit {
       if (imageBase64) {
         const url = await this.imagenUploadService.uploadPhoto(imageBase64);
         this.itemService.savePhotoData(url, this.selectedCosas);
+
         Swal.fire({
           title: 'Imagen subida exitosamente',
           icon: 'success',
           heightAuto: false,
+          allowEscapeKey: false,
+          allowOutsideClick: false,
         });
+        
+    this.selectedCosas = '';
       }
     } catch (error) {
       Swal.fire({
         title: 'Error al subir la foto',
         icon: 'error',
         heightAuto: false,
+        allowEscapeKey: false,
+        allowOutsideClick: false,
       });
+      
+    this.selectedCosas = '';
+
     }
   }
 
@@ -92,18 +94,26 @@ export class HomePage implements OnInit {
       if (imageBase64) {
         const url = await this.imagenUploadService.uploadPhoto(imageBase64);        
         this.itemService.savePhotoData(url, this.selectedCosas);
+
         Swal.fire({
           title: 'Imagen subida exitosamente',
           icon: 'success',
           heightAuto: false,
+          allowEscapeKey: false,
+          allowOutsideClick: false,
         });
+        this.selectedCosas = '';
       }
     } catch (error) {
       Swal.fire({
         title: 'Error al subir la foto',
         icon: 'error',
         heightAuto: false,
+        allowEscapeKey: false,
+        allowOutsideClick: false,
       });
+      
+    this.selectedCosas = '';
     }
   }
 }

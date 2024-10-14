@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
+import { Subject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CameraService {
+
+  private photoUploadedSubject = new Subject<void>();
 
   constructor() { }
 
@@ -12,11 +15,12 @@ export class CameraService {
     const image = await Camera.getPhoto({
       quality: 90,
       allowEditing: false,
-      resultType: CameraResultType.Base64, // También puedes usar CameraResultType.Uri si prefieres manejar archivos.
-      source: CameraSource.Camera // O CameraSource.Photos para abrir la galería.
+      resultType: CameraResultType.Base64, 
+      source: CameraSource.Camera 
     });
   
-    return image.base64String; // Esto será útil para subir la imagen a Firebase.
+    this.photoUploadedSubject.next();
+    return image.base64String; 
   }
   
   async selectFromGallery() {
@@ -24,9 +28,14 @@ export class CameraService {
       quality: 90,
       allowEditing: false,
       resultType: CameraResultType.Base64,
-      source: CameraSource.Photos // Para abrir la galería.
+      source: CameraSource.Photos 
     });
   
+    this.photoUploadedSubject.next();
     return image.base64String;
+  }
+
+  getPhotoUploadedObservable(): Observable<void> {
+    return this.photoUploadedSubject.asObservable();
   }
 }

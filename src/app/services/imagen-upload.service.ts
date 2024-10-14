@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { StorageError, getStorage, ref, uploadBytesResumable, getDownloadURL, deleteObject, uploadString } from '@angular/fire/storage';
 import { getAuth } from 'firebase/auth';
+import { Subject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,9 +9,14 @@ import { getAuth } from 'firebase/auth';
 export class ImagenUploadService {
 
   private storage;
+  private photoUploadedSubject = new Subject<void>();
 
   constructor () {
     this.storage = getStorage();
+  }
+
+  getPhotoUploadedObservable(): Observable<void> {
+    return this.photoUploadedSubject.asObservable();
   }
 
   /* async subirImagen(file: File, nroDocumento : number, nroDeFoto : Number): Promise<string> {
@@ -44,6 +50,8 @@ export class ImagenUploadService {
     if (user){
       const storageRef = ref(this.storage, `photos/${user.uid}/${new Date().getTime()}.jpg`);
       await uploadString(storageRef, imageBase64, 'base64',{contentType: 'image/jpeg'});
+
+      this.photoUploadedSubject.next();
 
       const downloadUrl = await getDownloadURL(storageRef);
       return downloadUrl;
