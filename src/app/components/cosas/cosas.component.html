@@ -1,26 +1,25 @@
-<ion-content>
-  <ion-list *ngIf="photos && photos.length > 0; else noPhotos">
-    <ion-card *ngFor="let photo of photos">
-      <img [src]="photo.imageUrl" alt=""/>
-        
-        <ion-card-content>
-          <p *ngIf="isPhotoAuthor(photo.author)">Subido por mí</p>
-          <p *ngIf="!isPhotoAuthor(photo.author)">Subido por: {{ photo.author }}</p>
-          <p>Votos: {{ photo.voters.length || 0 }}</p>
-          <ion-button *ngIf="!isPhotoAuthor(photo.author)"
-            [color]="hasVoted(photo) ? 'danger' : 'primary'" 
-            [disabled]="hasVoted(photo)" 
-            (click)="voteForPhoto(photo.id)">
-            <ion-icon slot="start" [name]="hasVoted(photo) ? 'heart' : 'star'"></ion-icon>
-            {{ hasVoted(photo) ? 'Votado' : 'Votar' }}
-          </ion-button>
-        </ion-card-content>
-    </ion-card>
-  </ion-list>
+<ion-list *ngIf="photos && photos.length > 0; else noPhotos">
+  <ion-card *ngFor="let photo of photos">
+    <div class="image-container">
+      <img [src]="photo.imageUrl" alt="Imagen" />
+    </div>
+    <ion-card-content>
+      <p *ngIf="isPhotoAuthor(photo.author)">Subido por mí</p>
+      <p *ngIf="!isPhotoAuthor(photo.author)">Subido por: {{ photo.author }}</p>
+      <p>Votos: {{ photo.voters.length || 0 }}</p>
+      <ion-button *ngIf="!isPhotoAuthor(photo.author)"
+        [color]="hasVoted(photo) ? 'danger' : 'primary'" 
+        [disabled]="hasVoted(photo)" 
+        (click)="voteForPhoto(photo.id)">
+        <ion-icon slot="start" [name]="hasVoted(photo) ? 'heart' : 'star'"></ion-icon>
+        {{ hasVoted(photo) ? 'Votado' : 'Votar' }}
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-list>
 
-  <ng-template #noPhotos>
-    <ion-card>
-      <ion-card-content>No hay fotos disponibles aún.</ion-card-content>
-    </ion-card>
-  </ng-template>
-</ion-content>
+<ng-template #noPhotos>
+  <ion-card>
+    <ion-card-content>No hay fotos disponibles aún.</ion-card-content>
+  </ion-card>
+</ng-template>
