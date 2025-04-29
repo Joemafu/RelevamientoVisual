@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, inject } from '@angular/core';
-import { IonToolbar, IonTitle, IonContent, IonButton, IonCardSubtitle, IonCardHeader, IonCard, IonCardTitle, IonCardContent, IonFab, IonFabButton, IonIcon, IonItem, IonHeader, IonFabList, IonList } from '@ionic/angular/standalone';
+import { IonButton, IonCard, IonCardContent, IonIcon, IonList } from '@ionic/angular/standalone';
 import { Item } from 'src/app/interfaces/item';
 import { ItemService } from 'src/app/services/item.service';
 import { CommonModule } from '@angular/common';
@@ -11,7 +11,7 @@ import { CameraService } from 'src/app/services/camera.service';
   templateUrl: './cosas.component.html',
   styleUrls: ['./cosas.component.scss'],
   standalone: true,
-  imports: [IonList, IonFabList, IonHeader, IonItem,  IonIcon, IonFabButton, IonFab, IonButton, IonCardContent, IonCardSubtitle, IonCardTitle, IonCardHeader, IonCard, IonToolbar, IonTitle, IonContent, CommonModule],
+  imports: [IonList, IonIcon, IonButton, IonCardContent, IonCard, CommonModule],
 })
 export class CosasComponent  implements OnInit {
 
@@ -57,9 +57,9 @@ export class CosasComponent  implements OnInit {
       await this.itemService.voteForPhoto(photoId);
       const photoIndex = this.photos.findIndex(photo => photo.id === photoId);
       if (photoIndex !== -1) {
-        this.photos[photoIndex].voters.push(this.usuario); // Actualiza localmente para reflejar el nuevo voto
+        this.photos[photoIndex].voters.push(this.usuario); 
       }
-      //this.loadPhotos(); // Recargar fotos para actualizar los votos
+
     } catch (error) {
       console.error('Error al votar por la foto:', error);
     }

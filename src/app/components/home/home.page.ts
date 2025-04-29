@@ -1,5 +1,5 @@
-import { Component, OnInit, inject, EventEmitter, Output } from '@angular/core';
-import { IonToolbar, IonTitle, IonContent, IonButton, IonCardSubtitle, IonCardHeader, IonCard, IonCardTitle, IonCardContent, IonFab, IonFabButton, IonIcon, IonItem, IonHeader, IonFabList } from '@ionic/angular/standalone';
+import { Component, OnInit, inject } from '@angular/core';
+import { IonContent, IonCard, IonCardContent, IonFab, IonFabButton, IonIcon, IonFabList } from '@ionic/angular/standalone';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -14,7 +14,7 @@ import { ItemService } from 'src/app/services/item.service';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
   standalone: true,
-  imports: [IonFabList, IonHeader, IonItem,  IonIcon, IonFabButton, IonFab, IonButton, IonCardContent, IonCardSubtitle, IonCardTitle, IonCardHeader, IonCard, IonToolbar, IonTitle, IonContent, CosasComponent ],
+  imports: [IonFabList, IonIcon, IonFabButton, IonFab, IonCardContent, IonCard, IonContent, CosasComponent ],
 })
 export class HomePage implements OnInit {
 

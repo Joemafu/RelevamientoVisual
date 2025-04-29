@@ -1,5 +1,3 @@
-//@import '../../../styles/variables.scss';
-
 .form-signin {
   display: flex;
   flex-direction: column;
@@ -48,22 +46,12 @@
   }
 }
 
-
-
-
-
-
-
-
   ion-content {
-    //--background: #DAB3E9;
-    
-
     font-family: 'Roboto', sans-serif;
-    background-image: url("./../../../assets/img/building.jpg"); /* Usamos url() para el background */
-    background-size: cover; /* Asegura que la imagen cubra toda la pantalla */
-    background-position: center; /* Centra la imagen */
-    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    background-image: url("./../../../assets/img/building.jpg"); 
+    background-size: cover; 
+    background-position: center;
+    background-repeat: no-repeat; 
   }
 
   .texto {

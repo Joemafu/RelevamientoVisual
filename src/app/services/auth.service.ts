@@ -3,7 +3,6 @@ import { Auth, signInWithEmailAndPassword, signOut, user } from '@angular/fire/a
 import { Router } from '@angular/router';
 import { Usuario } from '../interfaces/usuario';
 import { HttpClient } from '@angular/common/http';
-import { UserService } from './user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -18,8 +17,6 @@ export class AuthService {
 
   public http: HttpClient = inject(HttpClient);
 
-  public userService: UserService = inject(UserService);
-
   constructor() {}
   
   login(mail: string, password: string): Promise<string> {
@@ -28,12 +25,10 @@ export class AuthService {
         .then(async (userCredential) => {
 
           const user = userCredential.user;
-          //this.router.navigate(['/bienvenida']);
           resolve('');
           if (user.email) {
             this.currentUser = user.email;
           }
-          //await this.logService.logUserLogin(user.email!);
 
         })
         .catch(err => {

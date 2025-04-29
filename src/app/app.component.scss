@@ -23,14 +23,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between; /* Distribuye los elementos en toda la pantalla */
-  height: 80%; /* Ajusta el espacio vertical ocupado */
-  width: 100%; /* Asegura que ocupe todo el ancho */
-  padding: 0 20px; /* Añade un pequeño padding lateral */
+  justify-content: space-between; 
+  height: 80%; 
+  width: 100%;
+  padding: 0 20px;
 }
 
 .splash-logo {
-  width: 150px; /* Aumenta el tamaño del logo */
+  width: 150px; 
   height: 150px;
   opacity: 0;
   animation: fadeInLogo 2s ease-in-out 1.5s forwards;
@@ -38,7 +38,7 @@
 
 .splash-text h1 {
   margin: 0;
-  font-size: 3rem; /* Aumenta el tamaño del texto */
+  font-size: 3rem; 
   text-transform: uppercase;
   font-weight: bold;
   text-align: center;
@@ -49,7 +49,7 @@
 }
 
 .splash-content p {
-  font-size: 2rem; /* Aumenta el tamaño del código */
+  font-size: 2rem; 
   text-align: center;
   margin-top: 20px;
 }

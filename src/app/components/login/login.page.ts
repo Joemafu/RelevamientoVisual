@@ -1,5 +1,5 @@
-import { Component, OnInit, inject } from '@angular/core';
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonInput, IonList, IonItem } from '@ionic/angular/standalone';
+import { Component, inject } from '@angular/core';
+import { IonContent, IonButton } from '@ionic/angular/standalone';
 import { ReactiveFormsModule, FormBuilder, FormGroup, FormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
@@ -12,9 +12,9 @@ import { NavController } from '@ionic/angular';
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
   standalone: true,
-  imports: [IonItem, IonList, IonInput, IonButton, IonHeader, IonToolbar, IonTitle, IonContent, FormsModule, CommonModule, ReactiveFormsModule],
+  imports: [ IonButton, IonContent, FormsModule, CommonModule, ReactiveFormsModule],
 })
-export class LoginPage implements OnInit {
+export class LoginPage {
 
   protected mail: string = "";
   protected pass: string ="";
@@ -35,8 +35,6 @@ export class LoginPage implements OnInit {
       pass: [this.pass, [required, minLength]],
     });
   }
-
-  ngOnInit(): void {}
 
   async login()
   {
